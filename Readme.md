@@ -29,7 +29,7 @@ A full-stack web application that connects book owners with book seekers for ren
 
 - **Frontend**: React + Next.js
 - **Backend**: Node.js + Express
-- **Storage**: In-memory with JSON file persistence(loki.js)
+- **Storage**: In-memory with JSON file persistence (Loki.js)
 - **Image Storage**: AWS S3 (for book cover images)
 
 ## 📋 Installation and Setup
