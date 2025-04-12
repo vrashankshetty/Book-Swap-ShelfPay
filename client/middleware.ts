@@ -18,7 +18,6 @@ export async function middleware(request: NextRequest) {
   
   const isAuthPath = authPaths.some(path => pathname === path)
   const token = request.cookies.get('userId')?.value
-  console.log('Token:', token)
   
   if (!token) {
     if (isAuthPath) {

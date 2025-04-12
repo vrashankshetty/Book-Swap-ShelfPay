@@ -66,11 +66,10 @@ export default function EditBookPage() {
   
 
 
-  console.log("Form Data",formData)
+
 
   // Handle input changes
   const handleChange = (field: keyof BookFormData, value: string) => {
-    console.log("value changed called",field,value)
     setFormData((prev) => ({ ...prev, [field]: value }))
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }))

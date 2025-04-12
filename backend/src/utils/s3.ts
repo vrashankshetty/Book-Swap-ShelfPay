@@ -42,7 +42,7 @@ export async function uploadFileToS3(
       ContentType: file.mimetype,
       ObjectCannedACL: ObjectCannedACL.public_read
     };
-    console.log("params", params);
+
     await s3Client.send(new PutObjectCommand(params));
     
     const publicUrl = `https://${bucketName}.s3.${region}.amazonaws.com/${encodeURIComponent(file.originalname)}`;

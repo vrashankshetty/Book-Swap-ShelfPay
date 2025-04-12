@@ -4,7 +4,6 @@ import { getUsers } from '../db/database';
 export const authMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   const auth_header = req.headers.authorization;
   const userId = auth_header && auth_header.split(' ')[1];
-  console.log('User ID from header:', userId);
   if (!userId) {
     res.status(401).json({ 
       success: false,

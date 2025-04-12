@@ -52,7 +52,6 @@ export default function LoginPage() {
         email: values.email,
         password: values.password,
       })
-      console.log("result", result)
       if (result.success) {
         toast({
           title: "Login Successful",

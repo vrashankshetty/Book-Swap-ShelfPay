@@ -9,7 +9,6 @@ export const addBook = async(req: Request, res: Response): Promise<void> => {
   try {
     const user = req.user
     const { title, author, genre, city, contact,description } = req.body;
-    console.log("Input data:", req.body);
     // Validate book input
     const bookData: Partial<Book> = {
       title,
@@ -36,7 +35,6 @@ export const addBook = async(req: Request, res: Response): Promise<void> => {
     // Add new book
     const books = getBooks();
     const file = req.file;
-    console.log("File data:", file);
     let coverImage=null;
     if (file){
       const uploadRes = await uploadFileToS3(file as Express.Multer.File);
@@ -353,9 +351,7 @@ export const updateBook = async (req: Request, res: Response): Promise<void> => 
      coverImage = uploadRes.url;
     }
     if (coverImage) book.coverImage = coverImage;
-    console.log("Book data before update:", book);
     books.update(book);
-    console.log("Book data after update:");
     res.status(200).json({
       success: true,
       book: {
