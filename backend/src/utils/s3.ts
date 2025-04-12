@@ -15,7 +15,10 @@ const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 const bucketName = process.env.AWS_BUCKET_NAME;
 const region = process.env.AWS_REGION;
 
-
+console.log('AWS_ACCESS_KEY_ID:', accessKeyId);
+console.log('AWS_SECRET_ACCESS_KEY:', secretAccessKey);
+console.log('AWS_BUCKET_NAME:', bucketName);
+console.log('AWS_REGION:', region);
 
 export async function uploadFileToS3(
   file:Express.Multer.File | undefined,
