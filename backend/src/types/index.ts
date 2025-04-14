@@ -21,6 +21,18 @@ export interface Book {
   createdAt: Date;
 }
 
+
+export interface Request {
+  $loki?: number;
+  title: string;
+  description: string;
+  userId: number;
+  respond: boolean;
+  ownerId?: number;
+  response: string;
+  createdAt: Date;
+}
+
 // Extending Express Request object to include user
 declare global {
   namespace Express {

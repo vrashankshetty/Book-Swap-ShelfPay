@@ -192,3 +192,71 @@ export const booksApi = {
     }
   },
 }
+
+
+export const requestsApi = {
+  getAllRequests: async () => {
+    try {
+      const response = await api.get('/users/requests/owner');
+      return response.data;
+    } catch (error) {
+      return handleApiError(error, "Failed to fetch all requests");
+    }
+  },
+
+  getAllMyRequests: async () => {
+    try {
+      const response = await api.get('/users/requests/owner/me');
+      return response.data;
+    } catch (error) {
+      return handleApiError(error, "Failed to fetch my requests");
+    }
+  },
+
+  getUserRequests: async () => {
+    try {
+      const response = await api.get('/users/requests');
+      return response.data;
+    } catch (error) {
+      return handleApiError(error, "Failed to fetch user requests");
+    }
+  },
+
+  getRequestById: async (id: number) => {
+    try {
+      const response = await api.get(`/users/requests/${id}`);
+      return response.data;
+    } catch (error) {
+      return handleApiError(error, "Failed to fetch request details");
+    }
+  },
+
+  addRequest: async (data: { title: string,description:string }) => {
+    try {
+      const response = await api.post('/users/requests', data);
+      return response.data;
+    } catch (error) {
+      return handleApiError(error, "Failed to add request");
+    }
+  },
+
+  updateRequest: async (id: number, responseMessage: string) => {
+    try {
+      const response = await api.put(`/users/requests/owner/${id}`, {
+        response: responseMessage,
+      });
+      return response.data;
+    } catch (error) {
+      return handleApiError(error, "Failed to update request");
+    }
+  },
+
+  deleteRequest: async (id: number) => {
+    try {
+      const response = await api.delete(`/users/requests/${id}`);
+      return response.data;
+    } catch (error) {
+      return handleApiError(error, "Failed to delete request");
+    }
+  },
+};

@@ -1,5 +1,5 @@
 import loki from 'lokijs';
-import { User, Book } from '../types';
+import { User, Book, Request } from '../types';
 
 
 const db = new loki('db.json', {
@@ -11,6 +11,7 @@ const db = new loki('db.json', {
 
 let users: Collection<User>;
 let books: Collection<Book>;
+let requests: Collection<Request>;
 
 
 function initializeDatabase(): void {
@@ -23,6 +24,10 @@ function initializeDatabase(): void {
     indices: ['ownerId', 'title', 'city', 'genre']
   });
   
+  requests = db.getCollection<Request>('requests') || db.addCollection<Request>('requests', {
+    indices: ['userId', 'ownerId']
+  });
+
 
   if (users.count() === 0) {
     users.insert([
@@ -259,4 +264,11 @@ export const getBooks = (): Collection<Book> => {
     throw new Error('Database not initialized properly');
   }
   return books;
+};
+
+export const getRequests = (): Collection<Request> => {
+  if (!db.getCollection('requests')) {
+    throw new Error('Database not initialized properly');
+  }
+  return requests;
 };

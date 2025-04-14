@@ -1,4 +1,4 @@
-import { User, Book } from '../types';
+import { User, Book, Request } from '../types';
 
 export const validateUserInput = (user: Partial<User>): string[] => {
   const errors: string[] = [];
@@ -47,3 +47,14 @@ export const validateBookInput = (book: Partial<Book>): string[] => {
   
   return errors;
 };
+
+export const validateRequestInput = (request: Partial<Request>): string[] => {
+  const errors: string[] = [];
+  
+  if (!request.title || request.title.trim() === '') {
+    errors.push('Title is required');
+  }
+  
+  return errors;
+};
+

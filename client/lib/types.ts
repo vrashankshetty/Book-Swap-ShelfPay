@@ -18,3 +18,19 @@ export interface Book {
   status: "available" | "rented" | "exchanged"
   coverImage?: string
 }
+
+
+
+export interface Request {
+  id: number
+  $loki?: number
+  title: string
+  userId: number
+  description: string
+  respond: boolean
+  response: string
+  createdAt: Date
+  user?:User,
+  owner?: User,
+  ownerId: number
+}

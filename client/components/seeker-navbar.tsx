@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Book, LogOut, Menu, User } from "lucide-react"
+import { Book, FileText, LogOut, Menu, User } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
@@ -41,6 +41,14 @@ export default function Navbar() {
         <nav className="hidden items-center gap-6 md:flex">
           <Link href="/how-it-works" className="text-sm font-medium transition-colors hover:text-primary">
             How It Works
+          </Link>
+          <Link
+              href="/seeker/requests"
+              className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium hover:bg-accent"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FileText className="h-4 w-4" />
+              Requests
           </Link>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
