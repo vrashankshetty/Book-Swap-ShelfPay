@@ -129,9 +129,8 @@ export const getUserRequests = (req: Request, res: Response): void => {
     }
 
     const requests = getRequests();
-    const allReq = requests.find()
+    const allReq = requests.find({userId:req.user.$loki})
    
-
     const formattedRequests = allReq.map((req:any) => ({
       ...req,
       id: req.$loki
